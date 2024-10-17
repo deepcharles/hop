@@ -150,8 +150,9 @@ class HOPL2(BaseEstimator):
             self.n_states = init_cluster_centers.shape[0]
 
         self.penalty = penalty
+        self.is_cyclic = is_cyclic
         if self.penalty is not None:
-            if is_cyclic:
+            if self.is_cyclic:
                 self.transition_mat = get_cyclic_transition_mat(
                     n_states=self.n_states, penalty=self.penalty
                 )
